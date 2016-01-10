@@ -1,10 +1,15 @@
 'use strict';
 
 angular.module('myApp')
-	.controller('AssignmentCtrl', ['assignmentFactory', '$http', '$scope', '$log', function(assignmentFactory, $http, $scope, $log){
+	.controller('AssignmentCtrl', ['assignmentFactory', '$http', '$scope', '$log', '$location', function(assignmentFactory, $http, $scope, $log, $location){
 		$scope.hello = 'hello';
 
 		$scope.moment = moment;
+
+
+		$scope.isActive = function(viewLocation){
+			return viewLocation === $location.path();
+		};
 
 		var httpAssignmentsData = assignmentFactory.getAssignments();
 
@@ -14,6 +19,5 @@ angular.module('myApp')
 			var error = response.error.status;
 			$log.log('An error occurred. Status: ' + error);
 		});
-
 
 	}]);

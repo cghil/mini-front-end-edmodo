@@ -1,19 +1,27 @@
 .assignment-container {
-	height: 700px;
+    height: 700px;
 }
 
 .all-assignments {
+    height: 700px;
+    overflow: auto;
+}
+
+.height-700 {
+    height: 700px;
+}
+
+.selected-assignment {
+	margin-top: 46px;
 	height: 700px;
-	overflow: auto;
+	line-height: 600px;
 }
 
-.assignment {
-	border-bottom: 1px solid black;
-	padding: 0px 10px 0px 10px;
+.selected-assignment h4 {
+	vertical-align: middle;
+    display: inline-block;
 }
 
-.list-of-assignments {
-	border-top: 1px solid black;
-	border-left: 1px solid black;
-	border-right: 1px solid black;
+.borderSolidBlack {
+	border: 1px solid black;
 }

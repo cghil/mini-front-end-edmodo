@@ -12,6 +12,14 @@ angular.module('myApp')
 			})
 		};
 
+		service.isAssignmentSelected = function(assignmentId){
+			if (assignmentId.hasOwnProperty('error')){
+				return false;
+			} else {
+				return true;
+			}
+		};
+
 		return service;
 
 	}]);

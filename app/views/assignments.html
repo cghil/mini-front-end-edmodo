@@ -2,18 +2,23 @@
     <div class="row">
         <div class="all-assignments col-md-4">
         	<h3>Assignments</h3>
-        	<div class="list-of-assignments">
-	            <a ng-repeat="assignment in assignments" ng-href="#/assignments/{{assignment.id}}">
-	                <div class="assignment" ng-attr-id="{{assignment.id}}">
-	                    <h3>{{assignment.title}}</h3>
-	                    <p>{{moment(assignment.due_at).format('MMMM Do YYYY, h:mm:ss a')}}</p>
+            <!-- replace list of assignments with directory -->
+        	<div class="list-group">
+	            <a ng-repeat="assignment in assignments" class="list-group-item" ng-href="#/assignments/{{assignment.id}}" ng-class= "{active: isActive('/assignments/{{assignment.id}}')}">
+	                <div ng-attr-id="{{assignment.id}}" class="text-center">
+	                    <h4 class="list-group-item-heading">{{assignment.title}}</h4>
+	                    <p class="list-group-item-text">Due Date: {{moment(assignment.due_at).format('MMMM DD YYYY')}}</p>
 	                </div>
 	            </a>
         	</div>
         </div>
         <!-- replace below with directory at some point -->
-        <div class="selected-assignment col-md-8" ng-controller="HelloCtrl">
-
+        <div class="selected-assignment col-md-8 height-700" ng-controller="SingleAssignmentCtrl" ng-class="{ borderSolidBlack: noAssignmentSelected('/assignments'), 'text-center': noAssignmentSelected('/assignments') }">
+            <div class="vcenter" ng-hide="isAssignmentSelected">
+                <h4>{{message.error}}</h4>
+            </div>
+            <div ng-show="isAssignmentSelected">
+            </div>
         </div>
     </div>
 </div>
