@@ -7,3 +7,13 @@
 	overflow: auto;
 }
 
+.assignment {
+	border-bottom: 1px solid black;
+	padding: 0px 10px 0px 10px;
+}
+
+.list-of-assignments {
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}

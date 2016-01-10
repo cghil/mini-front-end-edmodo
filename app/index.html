@@ -6,6 +6,7 @@
     <title>Emodo Front End Project</title>
     <meta name="description" content="Edmodo Front End Project">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="/vendor/styles/normalize.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/main.css">
 </head>
@@ -14,6 +15,7 @@
     <div class="container">
         <div ng-view=""></div>
     </div>
+    <!-- Vendor JS Files -->
     <script src="vendor/scripts/jquery.js"></script>
     <script src="vendor/scripts/angular.js"></script>
     <script src="vendor/scripts/angular-route.js"></script>
@@ -23,8 +25,9 @@
     <!-- My JS Files -->
     <script src="scripts/app.js"></script>
     <script src="scripts/factories/assignmentfactory.js"></script>
-    <script src="scripts/controllers/assignment.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/assignment.js"></script>
+    <script src="scripts/controllers/single-assignment.js"></script>
 </body>
 
 </html>

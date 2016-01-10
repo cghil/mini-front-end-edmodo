@@ -9,14 +9,10 @@ angular.module('myApp')
 		var httpAssignmentsData = assignmentFactory.getAssignments();
 
 		httpAssignmentsData.then(function(response){
-
 			$scope.assignments = response.data;
-
 		}, function(response){
-
 			var error = response.error.status;
 			$log.log('An error occurred. Status: ' + error);
-
 		});
 
 
