@@ -1,0 +1,9 @@
+.assignment-container {
+	height: 700px;
+}
+
+.all-assignments {
+	height: 700px;
+	overflow: auto;
+}
+

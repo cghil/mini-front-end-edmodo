@@ -1,17 +1,36 @@
-<!doctype html>
-<html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title>Emodo Front End Project</title>
-    <meta name="description" content="Edmodo Front End Project">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="styles/main.css">
-  </head>
-  <body ng-app="myAuthApp">
+'use strict';
 
 
-  <script src="vendor/scripts/angular.js"></script>
-  <script src="scripts/app.js"></script>
+ // * Main module of the application.
 
-  </body>
-</html>
+angular
+  .module('myApp', [
+    'ENV.development',
+    'ngCookies',
+    'ngResource',
+    'ngRoute'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/assignments', {
+        templateUrl: 'views/assignments.html',
+        controller: 'AssignmentCtrl'
+      })
+      .when('/assignments/:id', {
+        templateUrl: 'views/assignments.html',
+        controller: 'AssignmentCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
+
+angular.module('ENV.development', [])
+  .constant('myConfig', {
+    backend: 'https://api.edmodo.com',
+    token: '12e7eaf1625004b7341b6d681fa3a7c1c551b5300cf7f7f3a02010e99c84695d'
+  });
