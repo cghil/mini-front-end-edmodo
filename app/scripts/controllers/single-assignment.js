@@ -1,15 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('SingleAssignmentCtrl', ['assignmentFactory', '$http', '$scope', '$log', "$routeParams", '$location', function(assignmentFactory, $http, $scope, $log, $routeParams, $location) {
-
-        var assignmentId = $routeParams.id || {
-            error: 'Please select an assignment'
-        };
-
-        $scope.noAssignmentSelected = function(viewLocation) {
-            return viewLocation === $location.path();
-        };
+    .controller('SingleAssignmentCtrl', ['assignmentFactory', '$http', '$scope', '$log', "$routeParams", '$location', '$filter', function(assignmentFactory, $http, $scope, $log, $routeParams, $location, $filter) {
 
         function createVariablesBasedOnRoute() {
             assignmentId = $routeParams.id || {
@@ -23,8 +15,25 @@ angular.module('myApp')
             }
         };
 
+        var assignmentId = $routeParams.id || {
+            error: 'Please select an assignment'
+        };
+
+        $scope.noAssignmentSelected = function(viewLocation) {
+            return viewLocation === $location.path();
+        };
+
+
         $scope.$watch('$routeParams.id', function() {
             createVariablesBasedOnRoute();
         });
+
+        $scope.$watch(function(){
+        	return assignmentFactory.assignments
+        }, function(newVal, oldVal){
+        	var assignmentsData = newVal;
+        	$scope.assignment = $filter('filter')(assignmentsData, {id: assignmentId});
+        });
+
 
     }]);

@@ -11,13 +11,16 @@
     height: 700px;
 }
 
-.selected-assignment {
+.margin-top-46 {
 	margin-top: 46px;
+}
+
+.no-assignment-selected {
 	height: 700px;
 	line-height: 600px;
 }
 
-.selected-assignment h4 {
+.no-assignment-selected h4 {
 	vertical-align: middle;
     display: inline-block;
 }

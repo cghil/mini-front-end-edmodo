@@ -13,11 +13,19 @@
         	</div>
         </div>
         <!-- replace below with directory at some point -->
-        <div class="selected-assignment col-md-8 height-700" ng-controller="SingleAssignmentCtrl" ng-class="{ borderSolidBlack: noAssignmentSelected('/assignments'), 'text-center': noAssignmentSelected('/assignments') }">
+        <div id="#selected-assignment" class="col-md-8 height-700 margin-top-46" ng-controller="SingleAssignmentCtrl" ng-class="{ borderSolidBlack: noAssignmentSelected('/assignments'), 'text-center': noAssignmentSelected('/assignments'), 'no-assignment-selected': noAssignmentSelected('/assignments') }">
             <div class="vcenter" ng-hide="isAssignmentSelected">
                 <h4>{{message.error}}</h4>
             </div>
             <div ng-show="isAssignmentSelected">
+                <div class="container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"> <a ng-href="#/assignments/{{assignmentId}}">Assignment</a></li>
+                        <li><a ng-href="#/assignments/{{assignmentId}}">Submissions</a></li>
+
+                    </ul>
+                    {{assignment[0].title}}
+                </div>
             </div>
         </div>
     </div>

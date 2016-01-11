@@ -20,6 +20,8 @@ angular.module('myApp')
 			}
 		};
 
+		service.assignments = null;
+
 		return service;
 
 	}]);
