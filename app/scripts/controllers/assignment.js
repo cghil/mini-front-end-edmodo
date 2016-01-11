@@ -5,7 +5,6 @@ angular.module('myApp')
 
 		$scope.moment = moment;
 
-
 		$scope.isActive = function(viewLocation){
 			return viewLocation === $location.path();
 		};
