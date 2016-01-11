@@ -28,7 +28,7 @@ angular.module('myApp')
         function saveSubmissions(){
         	httpSubmissions.then(function(response){
         		$scope.submissions = response.data;
-        		return response.data
+        		submissionFactory.submissions = response.data;
         	});
         };
 
@@ -68,7 +68,7 @@ angular.module('myApp')
         }, function(newVal, oldVal){
         	if (newVal !==null){
 	        	httpSubmissions = getAssignmentAndSubmissionsData(newVal);
-	        	submissionFactory.submissions = saveSubmissions();
+	        	saveSubmissions();
         	}
         });
 
@@ -76,8 +76,7 @@ angular.module('myApp')
         	return submissionFactory.submissions;
         }, function(newVal, oldVal){
         	if(newVal !== null){
-        		// debugger
-        		$log.log(newVal);
+        		$log.info(newVal);
         		submissionFactory.submissions = newVal;
         		$scope.submissions = submissionFactory.submissions;
         	}

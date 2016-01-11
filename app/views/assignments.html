@@ -39,19 +39,27 @@
                 </div>
                 <div ng-show="showSubmissions" ng-controller="SubmissionsCtrl">
                     <div id="submissions" class="list-group">
-                        <div ng-repeat="submission in submissions" class="list-group-item">
-                            <div ng-attr-id="{{submission.id}}" class="row">
-                                <div class="col-md-3 text-center">
-                                    <img class="submission-profile-img" ng-src="{{submission.creator.avatars.large}}">
-                                </div>
-                                <div class="col-md-5 margin-top-15">
-                                    <h4 class="list-group-item-heading">{{submission.creator.first_name}} {{submission.creator.last_name}}</h4>
-                                    <p><strong>Date Submitted:</strong> {{moment(submission.submitted_at).format('M/D/YYYY')}}</p>
-                                </div>
-                                <div class="col-md-4 text-center margin-top-15">
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                                    </button>
+                        <div ng-repeat="submission in submissions" class="list-group-item padding-bottom-0">
+                            <div ng-attr-id="{{submission.id}}">
+                                <div class="row">
+                                    <div class="col-md-2 text-center margin-bottom-10">
+                                        <img class="submission-profile-img" ng-src="{{submission.creator.avatars.large}}">
+                                    </div>
+                                    <div class="col-md-6 margin-top-15">
+                                        <h4 class="list-group-item-heading">{{submission.creator.first_name}} {{submission.creator.last_name}}</h4>
+                                        <p><strong>Date Submitted:</strong> {{moment(submission.submitted_at).format('M/D/YYYY')}}</p>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-1 text-center margin-top-15">
+                                        <button ng-click="showDetails = !showDetails;" type="button" class="btn btn-default">
+                                            <span ng-show="!showDetails" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                            <span ng-hide="!showDetails" class="glyphicon glyphicon-chevron-up" aria-hiddent="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="details col-md-12" ng-show="showDetails">
+                                        <div class="text-left">
+                                            {{submission.content}}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

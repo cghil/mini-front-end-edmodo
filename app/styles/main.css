@@ -45,6 +45,25 @@
 	margin-top: 15px;
 }
 
-.margin-bottom-0 {
-	margin-bottom: 0px;
+.details {
+	background-color: #D3D3D3;
+}
+
+.padding-bottom-0 {
+	padding-bottom: 0px;
+}
+
+.margin-bottom-10 {
+	margin-bottom: 10px;
+}
+
+@media (max-width: 992px){
+	.all-assignments {
+    	height: 275px;
+   		overflow: auto;
+	}
+
+	.assignment-container {
+    	height: 300px;
+	}
 }
