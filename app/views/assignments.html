@@ -7,7 +7,7 @@
                 <a ng-repeat="assignment in assignments" class="list-group-item" ng-href="#/assignments/{{assignment.id}}" ng-class="{active: isActive('/assignments/{{assignment.id}}')}">
                     <div ng-attr-id="{{assignment.id}}" class="text-center">
                         <h4 class="list-group-item-heading">{{assignment.title}}</h4>
-                        <p class="list-group-item-text">Due Date: {{moment(assignment.due_at).format('M/DD/YYYY')}}</p>
+                        <p class="list-group-item-text">Due Date: {{moment(assignment.due_at).format('M/D/YYYY')}}</p>
                     </div>
                 </a>
             </div>
@@ -28,17 +28,34 @@
                             <h3 class="panel-title">
                                 {{assignment[0].title}}
                                 <div>
-                                    <small>Due: {{moment(assignment[0].due_at).format('M/DD/YYYY')}}</small>
+                                    <small>Due: {{moment(assignment[0].due_at).format('M/D/YYYY')}}</small>
                                 </div>
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <p><strong>Description:</strong> {{assignment[0].description}}</p>
+                            <p><strong>Instructions:</strong> {{assignment[0].description}}</p>
                         </div>
                     </div>
                 </div>
-                <div ng-show="showSubmissions">
-                    hello
+                <div ng-show="showSubmissions" ng-controller="SubmissionsCtrl">
+                    <div id="submissions" class="list-group">
+                        <div ng-repeat="submission in submissions" class="list-group-item">
+                            <div ng-attr-id="{{submission.id}}" class="row">
+                                <div class="col-md-3 text-center">
+                                    <img class="submission-profile-img" ng-src="{{submission.creator.avatars.large}}">
+                                </div>
+                                <div class="col-md-5 margin-top-15">
+                                    <h4 class="list-group-item-heading">{{submission.creator.first_name}} {{submission.creator.last_name}}</h4>
+                                    <p><strong>Date Submitted:</strong> {{moment(submission.submitted_at).format('M/D/YYYY')}}</p>
+                                </div>
+                                <div class="col-md-4 text-center margin-top-15">
+                                    <button type="button" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

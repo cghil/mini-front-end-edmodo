@@ -3,7 +3,7 @@
 angular.module('myApp')
     .controller('SingleAssignmentCtrl', ['assignmentFactory', 'submissionFactory', '$http', '$scope', '$log', "$routeParams", '$location', '$filter', function(assignmentFactory, submissionFactory, $http, $scope, $log, $routeParams, $location, $filter) {
     	var httpSubmissions;
-
+    	// should I move functions to service to make code more module
         function createVariablesBasedOnRoute() {
             assignmentId = $routeParams.id || {
                 error: 'Please select an assignment'
@@ -27,11 +27,12 @@ angular.module('myApp')
 
         function saveSubmissions(){
         	httpSubmissions.then(function(response){
-        		
+        		$scope.submissions = response.data;
+        		return response.data
         	});
         };
 
-        function switchValues(value){
+        function switchTabValues(value){
         	if (value === "assignment"){
         		$scope.showAssignment = true;
         		$scope.showSubmissions = false; 
@@ -40,12 +41,13 @@ angular.module('myApp')
         		$scope.showAssignment = false;
         	}
         };
+        // --- end of functions
 
         $scope.showAssignment = true;
         $scope.showSubmissions = false;
 
         $scope.switchTabs = function(value){
-        	switchValues(value);
+        	switchTabValues(value);
         };
 
         var assignmentId = $routeParams.id || {
@@ -62,9 +64,23 @@ angular.module('myApp')
         });
 
         $scope.$watch(function(){
-        	return assignmentFactory.assignments
+        	return assignmentFactory.assignments;
         }, function(newVal, oldVal){
-        	httpSubmissions = getAssignmentAndSubmissionsData(newVal);
+        	if (newVal !==null){
+	        	httpSubmissions = getAssignmentAndSubmissionsData(newVal);
+	        	submissionFactory.submissions = saveSubmissions();
+        	}
+        });
+
+        $scope.$watch(function(){
+        	return submissionFactory.submissions;
+        }, function(newVal, oldVal){
+        	if(newVal !== null){
+        		// debugger
+        		$log.log(newVal);
+        		submissionFactory.submissions = newVal;
+        		$scope.submissions = submissionFactory.submissions;
+        	}
         });
 
     }]);

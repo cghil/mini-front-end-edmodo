@@ -12,6 +12,8 @@ angular.module('myApp')
 			})
 		};
 
+		service.submissions = null;
+
 		return service;
 
 	}]);
