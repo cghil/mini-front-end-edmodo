@@ -22,7 +22,8 @@ angular
       })
       .when('/assignments/:id', {
         templateUrl: 'views/assignments.html',
-        controller: 'AssignmentCtrl'
+        controller: 'AssignmentCtrl',
+        reloadOnSearch: false
       })
       .otherwise({
         redirectTo: '/'

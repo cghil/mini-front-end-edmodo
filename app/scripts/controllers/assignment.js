@@ -2,7 +2,6 @@
 
 angular.module('myApp')
 	.controller('AssignmentCtrl', ['assignmentFactory', '$http', '$scope', '$log', '$location', function(assignmentFactory, $http, $scope, $log, $location){
-		$scope.hello = 'hello';
 
 		$scope.moment = moment;
 
