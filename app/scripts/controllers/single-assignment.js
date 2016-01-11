@@ -5,7 +5,7 @@ angular.module('myApp')
     	var httpSubmissions;
 
     	$scope.moment = moment;
-    	
+
     	// should I move functions to service to make code more module
         function createVariablesBasedOnRoute() {
             assignmentId = $routeParams.id || {
@@ -60,7 +60,7 @@ angular.module('myApp')
             return viewLocation === $location.path();
         };
 
-
+        // using $watch variables... should change to $broadcast if I have more time
         $scope.$watch('$routeParams.id', function() {
             createVariablesBasedOnRoute();
         });
