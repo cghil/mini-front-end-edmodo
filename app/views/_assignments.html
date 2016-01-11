@@ -1,0 +1,11 @@
+<div ng-controller="AssignmentCtrl" class="all-assignments col-md-4">
+    <h3>Assignments</h3>
+    <div class="list-group">
+        <a ng-repeat="assignment in assignments" class="list-group-item" ng-href="#/assignments/{{assignment.id}}" ng-class="{active: isActive('/assignments/{{assignment.id}}')}">
+            <div ng-attr-id="{{assignment.id}}" class="text-center">
+                <h4 class="list-group-item-heading">{{assignment.title}}</h4>
+                <p class="list-group-item-text">Due Date: {{moment(assignment.due_at).format('M/D/YYYY')}}</p>
+            </div>
+        </a>
+    </div>
+</div>

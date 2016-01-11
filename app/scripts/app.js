@@ -12,10 +12,6 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
       .when('/assignments', {
         templateUrl: 'views/assignments.html',
         controller: 'AssignmentCtrl'
@@ -26,7 +22,7 @@ angular
         reloadOnSearch: false
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/assignments'
       });
   });
 

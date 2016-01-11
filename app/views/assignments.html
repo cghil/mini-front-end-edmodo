@@ -1,8 +1,7 @@
 <div class="assignment-container">
     <div class="row">
-        <div class="all-assignments col-md-4">
+<!--         <div class="all-assignments col-md-4">
             <h3>Assignments</h3>
-            <!-- replace list of assignments with directory -->
             <div class="list-group">
                 <a ng-repeat="assignment in assignments" class="list-group-item" ng-href="#/assignments/{{assignment.id}}" ng-class="{active: isActive('/assignments/{{assignment.id}}')}">
                     <div ng-attr-id="{{assignment.id}}" class="text-center">
@@ -11,7 +10,7 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </div> -->
         <div id="#selected-assignment" class="col-md-8 height-700 margin-top-46" ng-controller="SingleAssignmentCtrl" ng-class="{ borderSolidBlack: noAssignmentSelected('/assignments'), 'text-center': noAssignmentSelected('/assignments'), 'no-assignment-selected': noAssignmentSelected('/assignments') }">
             <div class="vcenter" ng-hide="isAssignmentSelected">
                 <h4>{{message.error}}</h4>
