@@ -1,0 +1,28 @@
+<div id="#selected-assignment" class="col-md-8 height-500 margin-top-46" ng-controller="SingleAssignmentCtrl" ng-class="{ borderSolidBlack: noAssignmentSelected('/assignments'), 'text-center': noAssignmentSelected('/assignments'), 'no-assignment-selected': noAssignmentSelected('/assignments') }">
+    <div ng-hide="isAssignmentSelected">
+        <h4>{{message.error}}</h4>
+    </div>
+    <div ng-show="isAssignmentSelected">
+        <ul class="nav nav-tabs">
+            <li ng-click="switchTabs('assignment')" ng-class="{active: showAssignment}"> <a ng-href="#/assignments/{{assignmentId}}">Assignment</a></li>
+            <li ng-click="switchTabs('submissions')" ng-class="{active: showSubmissions}"><a ng-href="#/assignments/{{assignmentId}}">Submissions</a></li>
+        </ul>
+        <br>
+        <div ng-show="showAssignment">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                                {{assignment[0].title}}
+                                <div>
+                                    <small>Due: {{moment(assignment[0].due_at).format('M/D/YYYY')}}</small>
+                                </div>
+                            </h3>
+                </div>
+                <div class="panel-body">
+                    <p><strong>Instructions:</strong> {{assignment[0].description}}</p>
+                </div>
+            </div>
+        </div>
+        <div ng-show="showSubmissions" ng-include=" 'views/_submissions.html' "></div>
+    </div>
+</div>

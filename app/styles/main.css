@@ -3,7 +3,7 @@
 }
 
 .all-assignments {
-    height: 700px;
+    height: 500px;
     overflow: auto;
 }
 
@@ -12,8 +12,8 @@
 	overflow: auto;
 }
 
-.height-700 {
-    height: 700px;
+.height-500 {
+    height: 500px;
 }
 
 .margin-top-46 {
@@ -21,8 +21,8 @@
 }
 
 .no-assignment-selected {
-	height: 700px;
-	line-height: 600px;
+	height: 500px;
+	line-height: 425px;
 }
 
 .no-assignment-selected h4 {
@@ -47,6 +47,8 @@
 
 .details {
 	background-color: #D3D3D3;
+	border: 1px solid black;
+	border-radius: 2px;
 }
 
 .padding-bottom-0 {

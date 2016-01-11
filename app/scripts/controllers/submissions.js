@@ -1,6 +1,7 @@
 angular.module('myApp')
 	.controller('SubmissionsCtrl', ['submissionFactory', '$http', '$scope', '$log', function(submissionFactory, $http, $scope, $log){
 
+		$scope.moment = moment;
 
 		$scope.$watch(function(){
 			return submissionFactory.submissions;
@@ -9,5 +10,5 @@ angular.module('myApp')
 				$scope.submissions = newVal;
 			}
 		});
-		
+
 	}]);

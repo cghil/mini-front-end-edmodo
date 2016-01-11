@@ -3,6 +3,9 @@
 angular.module('myApp')
     .controller('SingleAssignmentCtrl', ['assignmentFactory', 'submissionFactory', '$http', '$scope', '$log', "$routeParams", '$location', '$filter', function(assignmentFactory, submissionFactory, $http, $scope, $log, $routeParams, $location, $filter) {
     	var httpSubmissions;
+
+    	$scope.moment = moment;
+    	
     	// should I move functions to service to make code more module
         function createVariablesBasedOnRoute() {
             assignmentId = $routeParams.id || {
@@ -17,7 +20,7 @@ angular.module('myApp')
         };
 
         function getAssignmentAndSubmissionsData(newVal){
-        	if(newVal !== null){
+        	if(newVal !== null && $routeParams.id !== undefined){
         		var assignmentsData = newVal;
         		$scope.assignment = $filter('filter')(assignmentsData, {id: assignmentId});
         		var creatorId = $scope.assignment[0].creator.id;
@@ -41,7 +44,6 @@ angular.module('myApp')
         		$scope.showAssignment = false;
         	}
         };
-        // --- end of functions
 
         $scope.showAssignment = true;
         $scope.showSubmissions = false;
@@ -66,7 +68,7 @@ angular.module('myApp')
         $scope.$watch(function(){
         	return assignmentFactory.assignments;
         }, function(newVal, oldVal){
-        	if (newVal !==null){
+        	if (newVal !==null && $routeParams.id){
 	        	httpSubmissions = getAssignmentAndSubmissionsData(newVal);
 	        	saveSubmissions();
         	}
@@ -76,7 +78,6 @@ angular.module('myApp')
         	return submissionFactory.submissions;
         }, function(newVal, oldVal){
         	if(newVal !== null){
-        		$log.info(newVal);
         		submissionFactory.submissions = newVal;
         		$scope.submissions = submissionFactory.submissions;
         	}

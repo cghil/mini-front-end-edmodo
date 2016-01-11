@@ -13,13 +13,10 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/assignments', {
-        templateUrl: 'views/assignments.html',
-        controller: 'AssignmentCtrl'
+        templateUrl: 'views/assignment_details.html'
       })
       .when('/assignments/:id', {
-        templateUrl: 'views/assignments.html',
-        controller: 'AssignmentCtrl',
-        reloadOnSearch: false
+        templateUrl: 'views/assignment_details.html'
       })
       .otherwise({
         redirectTo: '/assignments'
